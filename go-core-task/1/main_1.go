@@ -24,35 +24,35 @@ func main() {
 	var complex64Num complex64 = complex64(6)
 	fmt.Println(complex64Num)
 
-	fmt.Println(CheckType(intNum10))
-	fmt.Println(CheckType(intNum8))
-	fmt.Println(CheckType(intNum16))
-	fmt.Println(CheckType(float64Num))
-	fmt.Println(CheckType(stringSome))
-	fmt.Println(CheckType(boolOp))
-	fmt.Println(CheckType(complex64Num))
+	fmt.Println(checkType(intNum10))
+	fmt.Println(checkType(intNum8))
+	fmt.Println(checkType(intNum16))
+	fmt.Println(checkType(float64Num))
+	fmt.Println(checkType(stringSome))
+	fmt.Println(checkType(boolOp))
+	fmt.Println(checkType(complex64Num))
 
-	combined := CombineVariablesToString(intNum10, intNum8, intNum16, float64Num, stringSome, boolOp, complex64Num)
+	combined := combineVariablesToString(intNum10, intNum8, intNum16, float64Num, stringSome, boolOp, complex64Num)
 	fmt.Println(combined)
 
-	var runeOfSlice []rune = ConvertStringToSliceOfRune(combined)
-	hashed := HashRunes(runeOfSlice)
+	var runeOfSlice []rune = convertStringToSliceOfRune(combined)
+	hashed := hashRunes(runeOfSlice)
 	fmt.Println(hashed)
 }
 
-func CheckType(something any) string {
+func checkType(something any) string {
 	return reflect.TypeOf(something).String()
 }
 
-func CombineVariablesToString(intNum10, intNum8, intNum16 int, float64Num float64, stringSome string, boolOp bool, complex64Num complex64) string {
+func combineVariablesToString(intNum10, intNum8, intNum16 int, float64Num float64, stringSome string, boolOp bool, complex64Num complex64) string {
 	return fmt.Sprintf("%d %d %d %.2f %s %t %v", intNum10, intNum8, intNum16, float64Num, stringSome, boolOp, complex64Num)
 }
 
-func ConvertStringToSliceOfRune(text string) []rune {
+func convertStringToSliceOfRune(text string) []rune {
 	return []rune(text)
 }
 
-func HashRunes(something []rune) string {
+func hashRunes(something []rune) string {
 	salt := []rune("go-2024")
 	mid := len(something) / 2
 	somethingSalt := append(something[:mid], append(salt, something[mid:]...)...)
